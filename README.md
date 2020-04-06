@@ -3,7 +3,7 @@ elasticsearch local for query verification
 
 # Handy commands
 
-## spinup using docker
+## Spin up using docker
 `docker network create somenetwork`
 
 `docker run -d --name elasticsearch --net somenetwork -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node" elasticsearch:<tag>`
@@ -13,7 +13,7 @@ elasticsearch local for query verification
 ## All indexed fields
 `curl -v localhost:9200/test_index/_mapping`
 
-## simple query
+## Simple query
 `curl -v localhost:9200/test_index/_search?q=accountId%3ABIP02100400&size=100`
 
 ## Experimentation commands
