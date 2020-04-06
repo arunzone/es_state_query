@@ -1,0 +1,42 @@
+{
+  "query": {
+    "bool": {
+      "should": [
+        {
+          "terms": {
+            "streetAddress.state": [
+              "victoria",
+              "vic"
+            ]
+          }
+        },
+        {
+          "bool": {
+            "must": [
+              {
+                "bool": {
+                  "must_not": [
+                    {
+                      "exists": {
+                        "field": "streetAddress.state"
+                      }
+                    }
+                  ]
+                }
+              },
+              {
+                "terms": {
+                  "postalAddress.state": [
+                  "victoria",
+                  "vic"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ],
+      "minimum_should_match": 1
+    }
+  }
+}

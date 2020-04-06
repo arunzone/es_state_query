@@ -1,0 +1,77 @@
+{
+  "mappings": {
+    "_doc": {
+      "dynamic": false,
+      "numeric_detection": true,
+      "properties": {
+        "streetAddress":    {
+          "properties": {
+            "state": {
+              "type": "keyword",
+              "normalizer": "lowercase_normalizer",
+              "fields": {
+                "lowercase": {
+                  "type": "keyword",
+                  "normalizer": "lowercase_normalizer"
+                }
+              }
+            }
+          }
+        },
+        "postalAddress":     {
+          "properties": {
+            "state": {
+              "type": "keyword",
+              "normalizer": "lowercase_normalizer",
+              "fields": {
+                "lowercase": {
+                  "type": "keyword",
+                  "normalizer": "lowercase_normalizer"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "settings": {
+    "index": {
+      "number_of_shards": 1,
+      "number_of_replicas": 1,
+      "max_ngram_diff": 25,
+      "analysis": {
+        "analyzer": {
+          "search_term_analyzer": {
+            "filter": ["lowercase"],
+            "type": "custom",
+            "tokenizer": "keyword"
+          },
+          "index_ngram_analyzer": {
+            "filter": ["lowercase"],
+            "type": "custom",
+            "tokenizer": "ngram_tokenizer"
+          }
+        },
+        "tokenizer": {
+          "ngram_tokenizer": {
+            "token_chars": [
+              "letter",
+              "digit",
+              "punctuation"
+            ],
+            "type": "nGram",
+            "min_gram": "1",
+            "max_gram": "25"
+          }
+        },
+        "normalizer": {
+          "lowercase_normalizer": {
+            "type": "custom",
+            "filter": ["lowercase"]
+          }
+        }
+      }
+    }
+  }
+}
