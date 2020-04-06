@@ -26,3 +26,8 @@ elasticsearch local for query verification
 `curl -H "Content-Type: application/json" --data "{\"query\":{\"term\":{\"streetAddress.state\":\"victoria\"}}}" localhost:9200/test_index/_search | json_pp`
 
 `curl -H "Content-Type: application/json" --data "@/Users/arun/projects/elasticsearch-indexes/query_state_vic.json" localhost:9200/test_index/_search | json_pp`
+
+## Other data combinations
+`curl -X POST -H "Content-Type: application/json" --data "{\"streetAddress\":{\"state\":\"nsw\"},\"postalAddress\":{\"state\":\"Victoria\"}}" http://localhost:9200/test_index/_doc/`
+
+`curl -X POST -H "Content-Type: application/json" --data "{\"postalAddress\":{\"state\":\"Victoria\"}}" http://localhost:9200/test_index/_doc/`
