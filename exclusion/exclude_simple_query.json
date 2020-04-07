@@ -1,0 +1,25 @@
+{
+  "query": {
+    "bool": {
+      "filter": [
+        {
+          "bool": {
+            "must": [
+              {
+                "term": {
+                  "platformCode": "abc"
+                }
+              },
+              {
+                "term": {
+                  "divisionNumber": 2
+                }
+              }
+
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

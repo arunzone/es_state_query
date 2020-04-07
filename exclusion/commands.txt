@@ -1,0 +1,10 @@
+curl -X PUT -H "Content-Type: application/json" --data "@platformcode_division_mapping.json" http://localhost:9200/test_index
+curl -X POST -H "Content-Type: application/json" --data "@a1.json" localhost:9200/test_index/_doc/
+curl -X POST -H "Content-Type: application/json" --data "@a2.json" localhost:9200/test_index/_doc/
+curl -X GET "localhost:9200/_search?pretty" -H 'Content-Type: application/json' -d'
+{
+    "query": {
+        "match_all": {}
+    }
+}
+'

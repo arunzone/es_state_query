@@ -1,0 +1,36 @@
+{
+  "query": {
+    "bool": {
+      "filter": [{
+        "bool": {
+          "must_not": [
+            {
+              "bool": {
+                "should": [
+                  {
+                    "bool": {
+                      "must": [
+                        {
+                          "term": {
+                            "platformCode": "abc"
+                          }
+                        },
+                        {
+                          "term": {
+                            "divisionNumber": 2
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "minimum_should_match": 1
+              }
+            }
+          ]
+        }
+      }
+    ]
+  }
+ }
+}
